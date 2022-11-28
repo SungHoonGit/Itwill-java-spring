@@ -1,0 +1,39 @@
+--product_sql.txt
+
+-- 상품 테이블 생성
+create table product (
+    product_code int           primary key  	-- 상품번호
+   ,product_name varchar(100)  not null     	-- 상품명
+   ,description  varchar(2000)              	-- 상품내용
+   ,price        int           default 0    	-- 상품가격
+   ,filename     varchar(500)              		-- 파일명
+   ,filesize	 NUMBER        DEFAULT 0    	-- 파일크기
+   ,regdate		 date		   default sysdate  -- 작성일
+);
+
+--상품번호 시퀀스 생성
+create sequence product_seq;
+
+
+commit;
+
+
+-- 칼럼 추가 
+ALTER TABLE product ADD filesize NUMBER 	DEFAULT 0 NOT NULL;
+ALTER TABLE product ADD regdate	 date 		default sysdate; --작성일
+
+-- 테이블 삭제
+drop table product;
+
+
+-------------------MariaDB
+
+create table product (
+    product_code int           auto_increment primary key  	-- 상품번호
+   ,product_name varchar(100)  not null     	-- 상품명
+   ,description  varchar(2000)              	-- 상품내용
+   ,price        int           default 0    	-- 상품가격
+   ,filename     varchar(500)              		-- 파일명
+   ,filesize	 bigint        DEFAULT 0 NOT NULL    	-- 파일크기
+   ,regdate		 datetime      NOT NULL			-- 작성일
+);
