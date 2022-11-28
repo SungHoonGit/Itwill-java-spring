@@ -1,0 +1,31 @@
+package crawling0923;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Test08_ITWill {
+
+	public static void main(String[] args) {
+		
+		try {
+		String URL = "https://www.itwill.co.kr/cmn/board/BBSMSTR_000000000071/bbsList.do";
+		
+		Document doc = Jsoup.connect(URL).get();
+//		System.out.println(doc.toString());
+		
+		Elements elements = doc.select(".bgcol01");
+//		elements.select(".line0 ac mobileHide").remove();
+		
+		for(Element element : elements) {
+			System.out.println(element.text());
+		}// for end
+		
+		
+		
+		} catch (Exception e) {
+			System.out.println("크롤링 실패 : " + e);
+		} 
+	}// main() end
+}// class end

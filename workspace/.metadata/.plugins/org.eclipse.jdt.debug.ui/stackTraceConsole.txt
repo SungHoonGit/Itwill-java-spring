@@ -1,0 +1,5 @@
+@ Override
+	public String toString() {
+		return "스마트TV";	// 상품명
+	}
+	

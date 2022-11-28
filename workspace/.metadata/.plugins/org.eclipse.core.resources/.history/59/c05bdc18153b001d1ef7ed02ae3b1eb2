@@ -1,0 +1,31 @@
+package crawling0923;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class Test06_NaverMovie {
+
+	public static void main(String[] args) {
+		// 네이버 영화 평점 후기 크롤링하기
+		// 예) "공조2" 영화 평점 제목을 공감순으로 정렬 후 크롤링하기( 1페이지 )
+		
+		try {
+			
+			// 네이버 영화 평점 후기 페이지 주소
+			String URL = "https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver";
+			String params ="?code=201641";	// 영화코드번호
+			params+="&type=after&onlyActualPointYn=N&onlySpoilerPointYn=N";
+			params+="&order=sympathyScore";	// 공감순
+			params+="&page=1";
+			
+			Document doc =Jsoup.connect(URL+params).get();
+			System.out.println(doc.toString());
+			
+		}catch ( Exception e ) {
+			System.out.println("크롤링 실패 : " + e);
+		} // end
+
+		
+		
+	} // main() end
+} // class end
